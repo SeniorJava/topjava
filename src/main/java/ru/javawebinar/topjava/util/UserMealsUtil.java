@@ -24,7 +24,7 @@ public class UserMealsUtil {
                 new UserMeal(LocalDateTime.of(2015, Month.MAY, 31,13,0), "Обед", 500),
                 new UserMeal(LocalDateTime.of(2015, Month.MAY, 31,20,0), "Ужин", 510)
         );
-        getFilteredMealsWithExceeded(mealList, LocalTime.of(7, 0), LocalTime.of(12,0), 2000).stream().forEach(u -> System.out.println(u.toString()));
+        getFilteredMealsWithExceeded(mealList, LocalTime.of(7, 0), LocalTime.of(13,10), 2000).stream().forEach(u -> System.out.println(u.toString()));
 //        .toLocalDate();
 //        .toLocalTime();
     }
@@ -49,17 +49,18 @@ public class UserMealsUtil {
                 }
             }
 
-            if (calories > caloriesPerDay) exceeded = true;
-            else exceeded = false;
+            exceeded = calories > caloriesPerDay;
 
             dates.put(date,exceeded);
         }
 
         for (UserMeal uM : mealList) {
-            userMealWithExceeds.add(new UserMealWithExceed(uM.getDateTime(),
-                    uM.getDescription(),
-                    uM.getCalories(),
-                    dates.get(uM.getDateTime().toLocalDate())));
+            if (uM.getDateTime().toLocalTime().isAfter(startTime) && uM.getDateTime().toLocalTime().isBefore(endTime)) {
+                userMealWithExceeds.add(new UserMealWithExceed(uM.getDateTime(),
+                        uM.getDescription(),
+                        uM.getCalories(),
+                        dates.get(uM.getDateTime().toLocalDate())));
+            }
         }
 
         return userMealWithExceeds;
