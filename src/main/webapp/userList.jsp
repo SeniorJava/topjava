@@ -5,5 +5,7 @@
 </head>
 <body>
 <h2>User list</h2>
+<p><a href="index.html">Home Page</a> </p>
+<p><a href="mealList.jsp">Meals</a> </p>
 </body>
 </html>

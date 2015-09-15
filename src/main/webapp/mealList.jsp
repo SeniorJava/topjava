@@ -12,5 +12,7 @@
 </head>
 <body>
   <h2>Meal List</h2>
+  <p><a href="index.html">Home Page</a> </p>
+  <p><a href="userList.jsp">Users</a> </p>
 </body>
 </html>
