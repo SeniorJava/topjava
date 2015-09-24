@@ -1,12 +1,12 @@
 # Занятие 1 онлайн проекта <a href="http://javawebinar.ru/topjava/">Topjava</a>
 
-**Напоминаю, что патчи в материалах урока необходимо накатывать (Apply Patch) на ветку MASTER и БЕЗ ВАШИХ ИЗМЕНЕНИЙ, иначе с ними будут проблемы.  Делать Apply можно как по ходу видео, так и немного заранее -  тогда при просмотре видео вы сразу сможете отслеживать изменения кода проекта.** 
+**Напоминаю, что cвой код пишете только в ветках HW. Код в ветке MASTER трогать нельзя вообще! Модификация кода только через патчи в материалах урока (Apply Patch), иначе с ними будут проблемы. Делать Apply можно как по ходу видео, так и немного заранее -  тогда при просмотре видео вы сразу сможете отслеживать изменения кода проекта.** 
 ## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFfm5hSHEtbmxmN2kxb0NocVRwWl9KanowWXVCVXRZTlhaM09wQUswZkRidTA">Материалы урока</a>
 
 ## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFOGU0a3ZUbFo3Skk">Домашнее задание: реализация getFilteredMealsWithExceeded через Stream API</a> 
 -  <a href="http://www.youtube.com/watch?v=_PDIVhEs6TM">Доступно о Java 8 Lambda</a>
-- **<a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFQ1UwZjdMUzRrakU">1_ Lambda_ samples.patch</a>**
-- **<a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFaE1ycEhQYUV2QjA">2_ HW0.patch</a>**
+- **<a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFYlhhZzBad3lJRFU">1_ Lambda_ samples.patch</a>**
+- **<a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFMWY3Rl9NWXJmQ3c">2_ HW0.patch</a>**
 - <a href="http://prologistic.com.ua/polnoe-rukovodstvo-po-java-8-stream.html">Перевод "Java 8 Stream Tutorial"</a>
 - <a href="https://docs.google.com/presentation/d/1fR1N_UsQDhOarLKo5nrgMU1r5-M8v-IbKhpS3sQTKnY">Основное в Java 8</a>
 
@@ -54,6 +54,7 @@
 
 - Ресурсы:
   - <a href="http://www.techinfo.net.ru/docs/web/javawebdev.html">Технологии Java для разработки веб-приложений</a>
+  - <a href="http://blog.trifork.com/2014/07/14/how-to-remotely-debug-application-running-on-tomcat-from-within-intellij-idea">Remotely debug on tomcat from IDEA</a>
 
 ## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFeGJCdDJHbWNyUzg&authuser=0">Логирование.</a>
 - **<a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFcEdRUnp0ZlY2cnc">7_ Add_ logging.patch</a>**
@@ -69,16 +70,31 @@
 - Управление логированием по JMX.
 - Контекст приложения. Деплой в Tomcat без IDE. Remote debug.
 
-## <a href="">Уровни и зависимости логгирования, JMX</a>
+## <a href="https://drive.google.com/open?id=0B9Ye2auQ_NsFSVRES241MlB2bkE">Уровни и зависимости логгирования. JMX</a>
 
 ## Домашнее задание HW01
- 
-    Попробовать разные деплои в Tomcat, remote и local debug
+
     По аналогии с Users добавить MealServlet и mealList.jsp.
-    Добавить в JSP и index.html ссылки друг на друга
-    Задеплоить приложение (war) в Tomcat c applicationContext=topjava и проверить работу ссылок
+    Задеплоить приложение (war) в Tomcat c applicationContext=topjava
+    Попробовать разные деплои в Tomcat, remote и local debug
+    
+    Сделать отображения списка еды в jsp, цвет записи в таблице зависит от параметра isExceeded (красный/зеленый).
+    Вариант реализации: 
+    -  из сервлета обращаетесь к реализации хранения еды в памяти;
+    -  преобразуете результат в List<UserMealWithExceeded>;
+    -  кладете список в запрос (request.setAttribute);
+    -  делаете forward на jsp для отрисовки таблицы (при redirect аттрибуты теряются). 
+       В jsp для цикла можно использовать JSTL tag forEach.
     
 Optional
 
     Сделать реализацию CRUD (create/read/update/delete) для списка еды.
-    Цвет записи в таблице зависит от параметра isExceeded. 
+    AJAX/JavaScript использовать не надо, делаем через <form method="post" и doPost() в сервлете.
+
+- Ресурсы:
+  - <a href="http://java-course.ru/student/book1/servlet/">Интернет-приложения на JAVA</a>
+  - <a href="http://stackoverflow.com/questions/246859/http-1-0-vs-1-1">HTTP 1.0 vs 1.1</a>
+  - <a href="http://java-course.ru/student/book1/jsp/">JSP</a>
+  - <a href="http://devcolibri.com/1250">JSTL для написания JSP страниц</a>
+  - <a href="http://javatutor.net/articles/jstl-patterns-for-developing-web-application-1">JSTL: Шаблоны для разработки веб-приложений в java</a>
+  - <a href="http://design-pattern.ru/patterns/mvc.html">MVC - Model View Controller</a>
