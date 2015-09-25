@@ -6,6 +6,7 @@ import ru.javawebinar.topjava.repository.UserMealRepository;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -46,8 +47,13 @@ public class InMemoryUserMealRepository implements UserMealRepository {
     }
 
     @Override
-    public Collection<UserMeal> getAll() {
+    public List<UserMeal> getAll() {
         return repository.values();
+    }
+
+    @Override
+    public void update(UserMeal meal) {
+
     }
 }
 
